@@ -1,43 +1,92 @@
-# Graduation-project
-## Multi-Cloud-Application-with-Load-Balancing-on-AWS-and-Azure
+# 🚀 Multi-Cloud Application with AWS and Azure
 
-The purpose of this graduation project is to develop and deploy a multi-cloud application on both AWS and Azure platforms, and to implement a load balancing mechanism between the two platforms to optimize the application's performance and availability.
+This project explores a production-grade **multi-cloud architecture**, leveraging both **Amazon Web Services (AWS)** and **Microsoft Azure** to ensure high availability, resilience, and scalability. The solution implements **intra-cloud** and **inter-cloud load balancing**, aiming to mitigate the risk of provider-level outages and infrastructure failures.
 
-Our project is a `cloud application` framework that provides `intra-` and `inter-cloud` resilience to reduce vendor disruptions. Much research has been done on intra-loud resilience, which allows applications to move from one server to another. However, intra-loud reliability platforms are not as common.
+Designed with distributed cloud principles in mind, this architecture allows for seamless failover, load distribution, and state consistency across providers.
 
-## Architecture
+---
 
-![alt text](https://github.com/NAchref/Multi-Cloud-Application-with-Load-Balancing-on-AWS-and-Azure/blob/main/PLAN%20%26%20ARCHITECTURE/Architecture.jpg)
+## 🧱 Architecture Overview
 
-## Vision and Goals Of The Project: 
+![Multi-Cloud Architecture](https://github.com/NAchref/Multi-Cloud-Application-with-Load-Balancing-on-AWS-and-Azure/blob/main/PLAN%20%26%20ARCHITECTURE/Architecture.jpg)
 
-My project is a framework for cloud applications to mitigate provider outages by providing resiliency at both the both $\color{orange}{intra-}$ and $\color{orange}{inter-}$ cloud levels, making it possible for pieces of applications to migrate from one server to another. Intra-cloud reliability platforms, however, are not nearly as common. We have included this in order to protect applications from several issues ranging from cyber attacks to hardware failures. If parts of AWS or AZURE go down, for example, the application itself should be alive and kicking, as resources will be directed to the provider that is still up.
+- **Frontend & API:** Containerized Django application
+- **Databases:** AWS RDS (MySQL) and Azure SQL
+- **Compute:** AWS EC2, Azure Virtual Machines
+- **Load Balancing:**
+  - **AWS Elastic Load Balancer (ELB)**
+  - **Azure Load Balancer**
+- **High Availability:** Active-active deployment across clouds
 
-We will implemented `load balancing` at both the $\color{orange}{intra-}$ and $\color{orange}{inter-}$ cloud levels so that all requests are serviced, as well as duplicated data throughout different cloud providers in order to ensure that application users always have access to their current data. We will tested our framework with our own application by running it on multiple cloud providers and testing its reliability when different cloud instances are turned off.
+---
 
+## 🎯 Objectives
 
-## Release Planning:
+- Architect and deploy a **fault-tolerant multi-cloud application**
+- Ensure **zero downtime** during cloud-specific failures
+- Implement **dynamic load balancing** at both intra-cloud and inter-cloud levels
+- Maintain **data consistency and state replication** across cloud providers
+- Leverage **Docker containers** for platform-agnostic deployment
 
-### Sprint 1:
+---
 
-Create a sample e-commerce application with `django` that have a simple CRUD Locally
+## 🗓️ Development Plan
 
-### Sprint 2:
- 
-Get a basic web server running on Azure that can connect to `AzureSQL`
-Get a basic web server running on AWS that can connect to `RDS`
-Ensure the web app can serve static content
-Ensure the web app can serve dynamic content and have will CRUD functionality as described
+### Sprint 1: Local Environment Setup
+- Develop a modular Django e-commerce application with full CRUD operations
+- Implement service-level abstraction to support future portability
 
-### Sprint 3:
+### Sprint 2: Cloud Service Integration
+- Deploy backend on Azure App Services and connect to Azure SQL
+- Deploy backend on AWS EC2 and connect to AWS RDS (MySQL)
+- Validate performance, latency, and endpoint consistency
 
-`Containerized` applications Django using Docker and upload it to Ec2 instance and connected to RDS DataBase.
-In same time upload container to Azure Vm and connected to Mysql Azure database.
+### Sprint 3: Containerization & CI/CD Pipeline
+- Dockerize Django app for consistent cloud deployment
+- Configure container orchestration on both platforms
+- Push containers to EC2 (AWS) and Azure VM
 
-### Sprint 4 
+### Sprint 4: Load Balancing & Resiliency Testing
+- Deploy **AWS Elastic Load Balancer** for intra-cloud distribution
+- Deploy **Azure Load Balancer** for mirrored configuration
+- Simulate node and cloud failure scenarios
+- Measure failover response, latency, and recovery time
 
-Start creating a `load balancing` service between container on same instance using the Amazon `Elastic Load Balancing (ELB)`, And on the same mission using `Azure Load Balancer` on azure 
-virtual machine 
+---
 
+## ⚙️ Technologies & Tools
 
+| Category          | Technology                     |
+|------------------|---------------------------------|
+| Cloud Platforms  | AWS, Microsoft Azure            |
+| Application      | Django (Python)                 |
+| Databases        | AWS RDS (MySQL), Azure SQL      |
+| Deployment       | Docker, Azure VM, AWS EC2       |
+| Load Balancing   | AWS ELB, Azure Load Balancer    |
+| CI/CD            | GitHub Actions (Optional)       |
+| Monitoring (optional) | CloudWatch, Azure Monitor     |
+
+---
+
+## 📈 Outcome
+
+- Achieved **multi-cloud deployment** with distributed database connectivity
+- Maintained **service availability during simulated cloud outages**
+- Successfully demonstrated **cross-cloud load balancing and failover**
+- Reduced cloud vendor lock-in risk with a flexible deployment strategy
+
+---
+
+## 📌 Future Improvements
+
+- Implement cross-cloud session persistence
+- Integrate DNS-level load balancing (e.g., AWS Route 53 + Azure Traffic Manager)
+- Add monitoring dashboards and SLA tracking
+- Extend architecture to support Kubernetes or multi-region deployment
+
+---
+
+## 📄 License
+
+This project was developed for educational and research purposes as part of the **CODTECH Internship – Task 3: Multi-Cloud Architecture**. All components can be reused or extended under appropriate attribution.
 
